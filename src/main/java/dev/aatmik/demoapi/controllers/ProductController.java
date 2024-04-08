@@ -4,10 +4,7 @@ import dev.aatmik.demoapi.dtos.FakeStoreProductDTO;
 import dev.aatmik.demoapi.models.Product;
 import dev.aatmik.demoapi.service.FakeStoreProductService;
 import dev.aatmik.demoapi.service.ProductService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 
@@ -42,4 +39,10 @@ public class ProductController { // waiter
     public ArrayList<Product> getAllProducts() {
         return productService.getAllProducts();
     }
+
+    @PostMapping("")
+    public void createProduct(Product product){
+        productService.createProduct(product);
+    }
+
 }

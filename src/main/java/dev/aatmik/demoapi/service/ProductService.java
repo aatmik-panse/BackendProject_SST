@@ -9,5 +9,6 @@ import java.util.ArrayList;
 public interface ProductService {
     Product getProductById(Long id);
     ArrayList<Product> getAllProducts();
-
+    void createProduct(Product product);
+    void updateProduct(Long id, Product product);
 }

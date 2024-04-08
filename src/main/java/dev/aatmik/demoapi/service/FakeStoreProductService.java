@@ -9,6 +9,7 @@ import java.util.ArrayList;
 
 @Service
 public class FakeStoreProductService implements ProductService{
+    @Override
     public Product getProductById(Long id){
 
         RestTemplate restTemplate = new RestTemplate(); // RestTemplate helps in making HTTP requests
@@ -20,6 +21,7 @@ public class FakeStoreProductService implements ProductService{
 
         return convertFakeStoreProductDTOToProduct(fakeStoreProductDTO);
     }
+    @Override
     public ArrayList<Product> getAllProducts(){
         RestTemplate restTemplate = new RestTemplate();
 
@@ -36,6 +38,20 @@ public class FakeStoreProductService implements ProductService{
 
         return products;
     }
+    @Override
+    public void createProduct(Product product) {
+        FakeStoreProductDTO fakeStoreProductDTO = new FakeStoreProductDTO();
+        fakeStoreProductDTO.setId(product.getId());
+        fakeStoreProductDTO.setTitle(product.getTitle());
+        fakeStoreProductDTO.setDescription(product.getDescription());
+        fakeStoreProductDTO.setPrice(product.getPrice());
+        fakeStoreProductDTO.setImage(product.getImageUrl());
+    }
+    @Override
+    public void updateProduct(Long id, Product product) {
+
+    }
+
     private Product convertFakeStoreProductDTOToProduct(FakeStoreProductDTO fakeStoreProductDTO){
         //there can be some attributes in fake store which we don't have in our Product, so we need to map them
 
@@ -50,4 +66,5 @@ public class FakeStoreProductService implements ProductService{
         product.setCategory(category);
         return product;
     }
+
 }
