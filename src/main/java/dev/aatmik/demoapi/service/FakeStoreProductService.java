@@ -49,6 +49,12 @@ public class FakeStoreProductService implements ProductService{
     }
     @Override
     public void updateProduct(Long id, Product product) {
+        FakeStoreProductDTO fakeStoreProductDTO = new FakeStoreProductDTO();
+        fakeStoreProductDTO.setId(product.getId());
+        fakeStoreProductDTO.setTitle(product.getTitle());
+        fakeStoreProductDTO.setDescription(product.getDescription());
+        fakeStoreProductDTO.setPrice(product.getPrice());
+        fakeStoreProductDTO.setImage(product.getImageUrl());
 
     }
 
