@@ -1,6 +1,7 @@
 package dev.aatmik.demoapi.service;
 
 import dev.aatmik.demoapi.dtos.FakeStoreProductDTO;
+import dev.aatmik.demoapi.exception.ProductNotFoundException;
 import dev.aatmik.demoapi.models.Category;
 import dev.aatmik.demoapi.models.Product;
 import org.springframework.stereotype.Service;
@@ -11,12 +12,13 @@ import java.util.ArrayList;
 public class FakeStoreProductService implements ProductService{
     @Override
     public Product getProductById(Long id){
-
+//        throw new RuntimeException("Implemented By Aatmik");
         RestTemplate restTemplate = new RestTemplate(); // RestTemplate helps in making HTTP requests
         //call the fake store api to get the product by id
         FakeStoreProductDTO fakeStoreProductDTO = restTemplate.getForObject("https://fakestoreapi.com/products/" + id, FakeStoreProductDTO.class);
+
         if(fakeStoreProductDTO == null){
-            return null;
+            throw new ProductNotFoundException(id, "Please enter a valid product id");
         }
 
         return convertFakeStoreProductDTOToProduct(fakeStoreProductDTO);
