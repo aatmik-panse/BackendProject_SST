@@ -1,10 +1,15 @@
 package dev.aatmik.demoapi.service;
 
+import dev.aatmik.demoapi.exception.ProductNotFoundException;
 import dev.aatmik.demoapi.models.Product;
 import dev.aatmik.demoapi.repositories.ProductRepository;
+import org.springframework.context.annotation.Primary;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.Optional;
+@Service
+@Primary
 
 public class SelfProductService implements ProductService{
 
@@ -15,9 +20,11 @@ public class SelfProductService implements ProductService{
     @Override
     public Product getProductById(Long id) {
         Optional<Product>  optionalProduct = productRepository.findById(id);
-        Product product = optionalProduct.get();
-        product.getDescription();
-        return null;
+        if(optionalProduct.isEmpty()){
+            throw new ProductNotFoundException(id,"Product not found");
+        }
+
+        return optionalProduct.get();
     }
 
     @Override
@@ -26,8 +33,8 @@ public class SelfProductService implements ProductService{
     }
 
     @Override
-    public void createProduct(Product product) {
-
+    public Product createProduct(Product product) {
+        return productRepository.save(product);
     }
 
     @Override

@@ -67,8 +67,8 @@ public class ProductController { // waiter
     }
 
     @PostMapping("")
-    public void createProduct(Product product){
-        productService.createProduct(product);
+    public Product createProduct(@RequestBody Product product){
+        return productService.createProduct(product);
     }
 
 }
