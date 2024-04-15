@@ -18,7 +18,7 @@ public class Product {
     private String title;
     private Double price;
     private String description;
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.MERGE)
     private Category category;
     private String imageUrl;
 }
