@@ -5,7 +5,6 @@
     <h1 align="center">BACKENDPROJECT SampleStore</h1>
 </p>
 <p align="center">
-    <em>  `slogan`</em>
 </p>
 <p align="center">
 	<img src="https://img.shields.io/github/license/aatmik-panse/BackendProject_SST?style=flat&color=0080ff" alt="license">
@@ -129,7 +128,7 @@
 
 Ensure you have the following dependencies installed on your system:
 
-* **Java**: `version x.y.z`
+* **Java**
 
 ### ⚙️ Installation
 
